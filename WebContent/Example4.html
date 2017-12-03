@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="freeData">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-controller='MainController as ctrl'>
+
+<form ng-submit='ctrl.submit()' name='freeForm'>
+<label for="ctrl.user.username">Email</label>
+<input type="email"
+	   name="username"
+	   ng-model="ctrl.user.username"
+	   required
+	   >
+	<span ng-show="freeForm.username.$error.required">
+	Email ID is mandatory
+	</span>   
+	<span ng-show="freeForm.username.$invalid">
+	Invalid Email ID
+	</span>  
+<br>	   
+<label for="ctrl.user.password">Password</label>
+<input  type="text"
+		name="password"
+	    ng-model='ctrl.user.password'
+	    required>
+	<span ng-show="freeForm.password.$error.required">
+	password required
+	</span>	    
+<input type="submit"
+   	   value='Submit'
+   	   ng-disabled = 'freeForm.$invalid'>
+
+</form>
+
+</body>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+<script type="text/javascript" src="lib/ng-module.example4.js"></script>
+</html>

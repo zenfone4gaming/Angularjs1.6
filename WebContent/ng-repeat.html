@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+.username.ng-valid {
+background-color : green;
+}
+
+.username.ng-dirty.ng-invalid-required {
+background-color : red;
+}
+
+.username.ng-dirty.ng-invalid-minlength {
+background-color : lightpink;
+}
+</style>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+<h1>Hello Controllers</h1>
+<button ng-click="ctrl.open('first')">Open First</button>
+<button ng-click="ctrl.open('second')">Open Second</button>
+<div ng-switch on="ctrl.tab">
+
+<div ng-switch-when="first">
+<div ng-controller="Subctrl as subctrl">
+<h3>First Tab</h3>
+<ul>
+<li ng-repeat="item in subctrl.list()">
+<span>{{item.label}}</span>
+</li>
+</ul>
+
+<button ng-click="subctrl.add()">Add More Items</button>
+</div>
+</div>
+
+
+<div ng-switch-when="second">
+<div ng-controller="Subctrl as subctrl">
+<h3>Second Tab</h3>
+<ul>
+<li ng-repeat="item in subctrl.list()">
+<span>{{item.label}}</span>
+</li>
+</ul>
+<button ng-click="subctrl.add()">Add More Element</button>
+</div>
+</div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+<script type="text/javascript" src="lib/ng-module.js"></script>
+</body>
+</html>  

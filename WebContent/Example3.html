@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app = 'notesApp'>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+.done {
+background: green;
+}
+
+.pending {
+background: red; 
+}
+</style>
+</head>
+
+<body ng-controller="MainCtrl as ctrl">
+DOM Element change every time someone clicks
+<div ng-repeat="note in ctrl.notes1">
+{{note.$$hashKey}}
+<span class='label'>{{note.label}}</span>
+<span class='author' ng-bind='note.done'></span>
+</div>
+
+DOM Element reused every time someone clicks
+<div ng-repeat="note in ctrl.notes2 track by note.id">
+{{note.$$hashKey}}
+<span class='label'>{{note.label}}</span>
+<span class='author' ng-bind='note.done'></span>
+</div>
+
+
+<br/>
+<button ng-click="ctrl.changeNote()">Change</button>
+
+</body>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+<script type="text/javascript" src="lib/ng-module.example3.js"></script>
+</html>
